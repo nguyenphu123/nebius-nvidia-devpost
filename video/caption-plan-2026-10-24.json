@@ -1,0 +1,104 @@
+{
+  "title": "Second Serving — Actual User Walkthrough",
+  "language": "en",
+  "source_name": "24.10.2026_19.43.05_REC.mp4",
+  "notes": [
+    "Real user footage, edited chronologically. Waiting and repeated attempts are shortened.",
+    "Playback speed is displayed whenever a clip is accelerated.",
+    "Original audio is removed. The Chrome password warning is excluded.",
+    "This recording demonstrates a blocked transfer, not a completed delivery.",
+    "Stock quantities and route values are illustrative demo inputs, not measured impact."
+  ],
+  "clips": [
+    {
+      "start": 0, "end": 6, "speed": 1,
+      "chapter": 1, "label": "SIGN IN",
+      "caption": "Branch operations and incident recovery for fast-food and takeaway chains."
+    },
+    {
+      "start": 12, "end": 20, "speed": 1,
+      "chapter": 2, "label": "SPOT THE SERVICE GAP",
+      "caption": "Branch A has ingredients, but equipment faults block its menu."
+    },
+    {
+      "start": 24, "end": 36, "speed": 1,
+      "chapter": 2, "label": "DEFINE THE REQUEST",
+      "caption": "Define the need: five beef-rice servings for Branch A within 60 minutes."
+    },
+    {
+      "start": 36, "end": 43, "speed": 1,
+      "chapter": 2, "label": "CHECK REAL CONSTRAINTS",
+      "caption": "A support branch must pass menu, stock, equipment and delivery-route checks."
+    },
+    {
+      "start": 44, "end": 54, "speed": 1,
+      "chapter": 3, "label": "CONNECT THE BRANCHES",
+      "caption": "Approve a directed route from Branch B to A: 10 minutes, ¥600."
+    },
+    {
+      "start": 56, "end": 65, "speed": 1,
+      "chapter": 4, "label": "BRANCH-OWNED INVENTORY",
+      "caption": "Select the ingredients stocked at Branch B. Quantities belong to each branch."
+    },
+    {
+      "start": 65, "end": 77, "speed": 1,
+      "chapter": 4, "label": "RECEIVE AND AUDIT STOCK",
+      "caption": "Receive stock with a reason. The new balance and movement history are recorded."
+    },
+    {
+      "start": 84, "end": 106, "speed": 1.5,
+      "chapter": 4, "label": "ASSIGN EQUIPMENT OWNERSHIP",
+      "caption": "Register a working fryer for Branch B, with an explicit owning branch."
+    },
+    {
+      "start": 109, "end": 122, "speed": 1.3,
+      "chapter": 4, "label": "CONFIGURE LOCAL OPERATIONS",
+      "caption": "Choose which dishes Branch B offers and set its operating hours."
+    },
+    {
+      "start": 129.3, "end": 138.5, "speed": 1,
+      "chapter": 4, "label": "RECALCULATE MENU READINESS",
+      "caption": "An additional working fryer makes Branch A's menu available. Incident history remains."
+    },
+    {
+      "start": 147, "end": 151.2, "speed": 1,
+      "chapter": 4, "label": "PRESERVE INCIDENT HISTORY",
+      "caption": "Track operating status separately from incident history."
+    },
+    {
+      "start": 151.3, "end": 163.7, "speed": 1,
+      "chapter": 5, "label": "NVIDIA NEMOTRON ON NEBIUS",
+      "caption": "Request AI advice for manager review. Operational changes still need confirmation."
+    },
+    {
+      "start": 191, "end": 197.5, "speed": 1,
+      "chapter": 6, "label": "RECHECK SUPPORT AVAILABILITY",
+      "caption": "Branch B is still blocked: a missing griller and a dish travel limit."
+    },
+    {
+      "start": 214.5, "end": 226, "speed": 1.25,
+      "chapter": 6, "label": "COMPLETE BRANCH EQUIPMENT",
+      "caption": "Add a working griller to Branch B. Equipment requirements are checked per dish."
+    },
+    {
+      "start": 230, "end": 246.5, "speed": 1.4,
+      "chapter": 7, "label": "REPORT A NEW BRANCH INCIDENT",
+      "caption": "Record a fryer fault at Branch B and request four fried-chicken servings."
+    },
+    {
+      "start": 247, "end": 254, "speed": 1,
+      "chapter": 7, "label": "SET UP THE REVERSE ROUTE",
+      "caption": "Approve the return direction separately: Branch A to Branch B."
+    },
+    {
+      "start": 254, "end": 263.5, "speed": 1,
+      "chapter": 8, "label": "ENFORCE THE DISH TRAVEL POLICY",
+      "caption": "Transfer blocked: 10 minutes of travel exceeds the dish's 3-minute limit."
+    },
+    {
+      "start": 271, "end": 279.5, "speed": 1,
+      "chapter": 8, "label": "A CHECKED PLAN, NOT A FALSE PROMISE",
+      "caption": "No eligible source means no transfer is created. Managers must review the constraints."
+    }
+  ]
+}

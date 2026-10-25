@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:06,000
+Branch operations and incident recovery for fast-food and takeaway chains.
+
+2
+00:00:06,000 --> 00:00:14,000
+Branch A has ingredients, but equipment faults block its menu.
+
+3
+00:00:14,000 --> 00:00:26,000
+Define the need: five beef-rice servings for Branch A within 60 minutes.
+
+4
+00:00:26,000 --> 00:00:33,000
+A support branch must pass menu, stock, equipment and delivery-route checks.
+
+5
+00:00:33,000 --> 00:00:43,000
+Approve a directed route from Branch B to A: 10 minutes, ¥600.
+
+6
+00:00:43,000 --> 00:00:52,000
+Select the ingredients stocked at Branch B. Quantities belong to each branch.
+
+7
+00:00:52,000 --> 00:01:04,000
+Receive stock with a reason. The new balance and movement history are recorded.
+
+8
+00:01:04,000 --> 00:01:18,640
+Register a working fryer for Branch B, with an explicit owning branch.
+
+9
+00:01:18,640 --> 00:01:28,640
+Choose which dishes Branch B offers and set its operating hours.
+
+10
+00:01:28,640 --> 00:01:37,840
+An additional working fryer makes Branch A's menu available. Incident history remains.
+
+11
+00:01:37,840 --> 00:01:42,040
+Track operating status separately from incident history.
+
+12
+00:01:42,040 --> 00:01:54,440
+Request AI advice for manager review. Operational changes still need confirmation.
+
+13
+00:01:54,440 --> 00:02:00,920
+Branch B is still blocked: a missing griller and a dish travel limit.
+
+14
+00:02:00,920 --> 00:02:10,120
+Add a working griller to Branch B. Equipment requirements are checked per dish.
+
+15
+00:02:10,120 --> 00:02:21,880
+Record a fryer fault at Branch B and request four fried-chicken servings.
+
+16
+00:02:21,880 --> 00:02:28,880
+Approve the return direction separately: Branch A to Branch B.
+
+17
+00:02:28,880 --> 00:02:38,360
+Transfer blocked: 10 minutes of travel exceeds the dish's 3-minute limit.
+
+18
+00:02:38,360 --> 00:02:46,840
+No eligible source means no transfer is created. Managers must review the constraints.

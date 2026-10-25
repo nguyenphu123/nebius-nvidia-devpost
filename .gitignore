@@ -1,0 +1,48 @@
+# Private environment and local credentials
+.env
+.env.*
+!.env.example
+/.npmrc
+/.pypirc
+/.netrc
+/_netrc
+/credentials*.json
+/service-account*.json
+/client_secret*.json
+*.pem
+*.key
+*.p12
+*.pfx
+.pgpass
+.pg_service.conf
+
+# Dependencies, private PostgreSQL data and local tooling
+.demo-tools/
+data/
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Logs and database exports (keep SQL migration sources tracked)
+*.log
+*.dump
+*.backup
+
+# Private recording inputs and generated review frames
+/recordings/
+/rescue-recording/
+/user-recording-review/
+/user-review-oct12/
+/*-preview.png
+/*-preview.jpg
+/demo-poster*.jpg
+*.mp4
+*.mkv
+*.webm
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db

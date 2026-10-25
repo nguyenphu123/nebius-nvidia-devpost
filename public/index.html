@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Second Serving · Kitchen workspace</title>
+  <meta name="description" content="Turn donated ingredients into a feasible community kitchen plan.">
+  <link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="Second Serving home"><img src="/favicon.svg" alt="" width="36" height="36">second serving<span class="brand-dot">.</span></a><div class="workspace-label">COMMUNITY KITCHEN <span>/</span> Service planner</div><div class="draft-tag">Interactive draft</div></header>
+  <nav class="workspace-nav" aria-label="Workspace navigation"><a href="/legacy" aria-current="page">Meal Planner</a><a href="/rescue">Chain Rescue</a><a href="/ops">Chain Operations / Sign in</a></nav>
+  <main>
+    <div class="page-heading"><div><div class="eyebrow">KITCHEN WORKSPACE</div><h1>Plan your next service.</h1><p>Set your kitchen capacity, review ingredients, then build a plan.</p></div><button id="reset" class="button secondary">Reset sample kitchen</button></div>
+    <div class="workspace">
+      <aside class="panel pantry"><div class="section-heading"><div><span class="eyebrow">01 / YOUR KITCHEN</span><h2>What we have</h2></div><span class="small-badge">Sample data</span></div>
+        <form id="kitchen-form">
+          <div class="settings-grid">
+            <label>Guests<input name="guests" type="number" min="10" max="300" required></label>
+            <label>Budget · $<input name="budget" type="number" min="0" max="200" step="0.1" required></label>
+            <label>Working burners<input name="burners" type="number" min="1" max="4" required></label>
+            <label>Volunteers<input name="volunteers" type="number" min="1" max="12" required></label>
+          </div>
+          <label class="time-label">Time until service · minutes<input name="minutes" type="number" min="30" max="480" required></label>
+          <details class="advanced-settings"><summary>Allow extra time for unexpected delays</summary><label class="time-label">Reserved contingency · minutes<input name="bufferMinutes" type="number" min="0" max="60" value="0" required></label>
+          <p class="tiny muted">Prep, cooking and packing must finish before this reserved time. Not a food-safety guarantee.</p></details>
+          <p id="save-status" class="tiny muted" role="status">Completed plans are saved on this browser only.</p>
+          <div class="inventory-heading"><h3>Pantry inventory</h3><span id="inventory-count"></span></div>
+          <p class="muted tiny">Use your own ingredient names. Add a short description if needed, then enter the quantity and unit.</p>
+          <label class="inventory-search">Find an ingredient<input type="search" id="inventory-search" placeholder="Search your pantry…" autocomplete="off"></label><p id="search-status" class="tiny muted" role="status"></p><div id="inventory"></div>
+          <datalist id="ingredient-units"><option value="kg"><option value="g"><option value="l"><option value="ml"><option value="pieces"><option value="packs"><option value="bunches"><option value="bags"><option value="boxes"></datalist>
+          <button type="button" class="button secondary full" id="add-ingredient">+ Add ingredient</button>
+          <p id="inventory-feedback" class="tiny muted" role="status" aria-live="polite"></p>
+          <button type="submit" class="button primary full" id="build">Build kitchen plan <span>↗</span></button>
+        </form>
+      </aside>
+      <section class="plan-area" aria-label="Kitchen plan">
+        <div class="service-banner"><div><span class="eyebrow">YOUR PLAN AT A GLANCE</span><h2>A workable service, together.</h2><p>Review portions, purchases and preparation before approving.</p></div></div>
+        <div id="plan-status" role="status" aria-live="polite">Loading the sample kitchen…</div>
+        <div id="inventory-notice" hidden></div>
+        <div class="metrics" id="metrics"></div>
+        <div id="plan-comparison" class="panel meals-panel" hidden aria-live="polite"></div>
+        <details class="panel meals-panel recovery-details"><summary>Need more capacity? Compare recovery options</summary><p class="tiny muted">What-if calculations only. Confirm equipment and service changes before applying.</p><button class="button secondary" id="compare-options">Compare options</button><div id="options-result" aria-live="polite"></div></details>
+        <p id="buffer-status" class="tiny" role="status"></p>
+        <p class="tiny muted">Prototype: three sample recipes. Food type is descriptive only; unmatched local ingredients are not counted. Kitchen-lead review is required.</p>
+        <div class="panel meals-panel"><div class="section-heading"><div><span class="eyebrow">02 / ON THE MENU</span><h2>Your service plan</h2></div><span class="small-badge">10 portions / batch</span></div><div id="meals"></div></div>
+        <div class="panel execution"><div class="tabs" role="tablist" aria-label="Plan details"><button role="tab" aria-selected="true" aria-controls="detail-content" id="tab-timeline" data-tab="timeline">Kitchen timeline</button><button role="tab" aria-selected="false" aria-controls="detail-content" id="tab-shopping" data-tab="shopping" tabindex="-1">Shopping list</button><button role="tab" aria-selected="false" aria-controls="detail-content" id="tab-stock" data-tab="stock" tabindex="-1">Stock usage</button></div><div id="detail-content" role="tabpanel" aria-labelledby="tab-timeline"></div></div>
+        <div class="approval-bar"><p id="approval-copy">Review the plan with your kitchen lead.</p><div><button id="export" class="button secondary">Export plan</button><button id="approve" class="button primary">Approve plan</button></div></div>
+      </section>
+      <aside class="panel assistant"><div class="section-heading"><div><span class="eyebrow">03 / WHEN PLANS CHANGE</span><h2>A hand in the kitchen</h2></div><span class="sparkle" aria-hidden="true">✳</span></div><p class="assistant-intro">A delivery falls through. More guests arrive. Tell me what changed and we'll work through it.</p>
+        <div class="assistant-engine" id="engine">Nemotron · via Nebius</div>
+        <div class="scenario"><span class="eyebrow">TRY A KITCHEN CURVEBALL</span><button class="scenario-button" id="scenario">No lentils. 20 more guests.<br>One burner breaks. <span>↗</span></button><p class="tiny muted">Instant sample scenario · no AI call</p></div>
+        <div id="conversation" class="conversation" aria-live="polite"><div class="message bot">I'm ready. Send an update below and I'll propose changes for you to review.</div></div>
+        <form id="assistant-form"><label for="message" class="sr-only">Kitchen update</label><textarea id="message" rows="3" maxlength="3000" placeholder="e.g. We now have 140 guests and only one working burner." required></textarea><button id="send" class="button primary full" type="submit">Ask kitchen assistant <span>✳</span></button></form>
+        <div id="proposal"></div>
+        <details class="assumptions"><summary>Planning assumptions</summary><p>Three illustrative, dairy-free recipes. One batch serves 10. One pot per burner. Prep and packing share available volunteers; burner cooking assumes no dedicated full-time operator. Oil, seasoning, water and cookware are available.</p><p>Purchases arrive before prep. Prices and purchase limits are sample values. A kitchen lead must confirm food handling, allergens and recipe suitability.</p><p>We search recipe combinations and construct a feasible schedule. This draft does not certify nutritional adequacy or guarantee a globally optimal schedule.</p></details>
+      </aside>
+    </div>
+    <footer><span>SECOND SERVING <span class="footer-divider">/</span> Less waste. More welcome.</span><span>Local draft · illustrative recipes & prices · English-first</span></footer>
+  </main>
+</body>
+</html>

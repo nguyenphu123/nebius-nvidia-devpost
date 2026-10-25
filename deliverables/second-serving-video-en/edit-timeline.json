@@ -1,0 +1,212 @@
+{
+  "source_name": "24.10.2026_19.43.05_REC.mp4",
+  "fps": 25,
+  "duration": 166.84,
+  "notes": [
+    "Real user footage, edited chronologically. Waiting and repeated attempts are shortened.",
+    "Playback speed is displayed whenever a clip is accelerated.",
+    "Original audio is removed. The Chrome password warning is excluded.",
+    "This recording demonstrates a blocked transfer, not a completed delivery.",
+    "Stock quantities and route values are illustrative demo inputs, not measured impact."
+  ],
+  "clips": [
+    {
+      "start": 0,
+      "end": 6,
+      "speed": 1,
+      "chapter": 1,
+      "label": "SIGN IN",
+      "caption": "Branch operations and incident recovery for fast-food and takeaway chains.",
+      "frames": 150,
+      "output_start": 0.0,
+      "output_end": 6.0
+    },
+    {
+      "start": 12,
+      "end": 20,
+      "speed": 1,
+      "chapter": 2,
+      "label": "SPOT THE SERVICE GAP",
+      "caption": "Branch A has ingredients, but equipment faults block its menu.",
+      "frames": 200,
+      "output_start": 6.0,
+      "output_end": 14.0
+    },
+    {
+      "start": 24,
+      "end": 36,
+      "speed": 1,
+      "chapter": 2,
+      "label": "DEFINE THE REQUEST",
+      "caption": "Define the need: five beef-rice servings for Branch A within 60 minutes.",
+      "frames": 300,
+      "output_start": 14.0,
+      "output_end": 26.0
+    },
+    {
+      "start": 36,
+      "end": 43,
+      "speed": 1,
+      "chapter": 2,
+      "label": "CHECK REAL CONSTRAINTS",
+      "caption": "A support branch must pass menu, stock, equipment and delivery-route checks.",
+      "frames": 175,
+      "output_start": 26.0,
+      "output_end": 33.0
+    },
+    {
+      "start": 44,
+      "end": 54,
+      "speed": 1,
+      "chapter": 3,
+      "label": "CONNECT THE BRANCHES",
+      "caption": "Approve a directed route from Branch B to A: 10 minutes, ¥600.",
+      "frames": 250,
+      "output_start": 33.0,
+      "output_end": 43.0
+    },
+    {
+      "start": 56,
+      "end": 65,
+      "speed": 1,
+      "chapter": 4,
+      "label": "BRANCH-OWNED INVENTORY",
+      "caption": "Select the ingredients stocked at Branch B. Quantities belong to each branch.",
+      "frames": 225,
+      "output_start": 43.0,
+      "output_end": 52.0
+    },
+    {
+      "start": 65,
+      "end": 77,
+      "speed": 1,
+      "chapter": 4,
+      "label": "RECEIVE AND AUDIT STOCK",
+      "caption": "Receive stock with a reason. The new balance and movement history are recorded.",
+      "frames": 300,
+      "output_start": 52.0,
+      "output_end": 64.0
+    },
+    {
+      "start": 84,
+      "end": 106,
+      "speed": 1.5,
+      "chapter": 4,
+      "label": "ASSIGN EQUIPMENT OWNERSHIP",
+      "caption": "Register a working fryer for Branch B, with an explicit owning branch.",
+      "frames": 366,
+      "output_start": 64.0,
+      "output_end": 78.64
+    },
+    {
+      "start": 109,
+      "end": 122,
+      "speed": 1.3,
+      "chapter": 4,
+      "label": "CONFIGURE LOCAL OPERATIONS",
+      "caption": "Choose which dishes Branch B offers and set its operating hours.",
+      "frames": 250,
+      "output_start": 78.64,
+      "output_end": 88.64
+    },
+    {
+      "start": 129.3,
+      "end": 138.5,
+      "speed": 1,
+      "chapter": 4,
+      "label": "RECALCULATE MENU READINESS",
+      "caption": "An additional working fryer makes Branch A's menu available. Incident history remains.",
+      "frames": 230,
+      "output_start": 88.64,
+      "output_end": 97.84
+    },
+    {
+      "start": 147,
+      "end": 151.2,
+      "speed": 1,
+      "chapter": 4,
+      "label": "PRESERVE INCIDENT HISTORY",
+      "caption": "Track operating status separately from incident history.",
+      "frames": 105,
+      "output_start": 97.84,
+      "output_end": 102.04
+    },
+    {
+      "start": 151.3,
+      "end": 163.7,
+      "speed": 1,
+      "chapter": 5,
+      "label": "NVIDIA NEMOTRON ON NEBIUS",
+      "caption": "Request AI advice for manager review. Operational changes still need confirmation.",
+      "frames": 310,
+      "output_start": 102.04,
+      "output_end": 114.44
+    },
+    {
+      "start": 191,
+      "end": 197.5,
+      "speed": 1,
+      "chapter": 6,
+      "label": "RECHECK SUPPORT AVAILABILITY",
+      "caption": "Branch B is still blocked: a missing griller and a dish travel limit.",
+      "frames": 162,
+      "output_start": 114.44,
+      "output_end": 120.92
+    },
+    {
+      "start": 214.5,
+      "end": 226,
+      "speed": 1.25,
+      "chapter": 6,
+      "label": "COMPLETE BRANCH EQUIPMENT",
+      "caption": "Add a working griller to Branch B. Equipment requirements are checked per dish.",
+      "frames": 230,
+      "output_start": 120.92,
+      "output_end": 130.12
+    },
+    {
+      "start": 230,
+      "end": 246.5,
+      "speed": 1.4,
+      "chapter": 7,
+      "label": "REPORT A NEW BRANCH INCIDENT",
+      "caption": "Record a fryer fault at Branch B and request four fried-chicken servings.",
+      "frames": 294,
+      "output_start": 130.12,
+      "output_end": 141.88
+    },
+    {
+      "start": 247,
+      "end": 254,
+      "speed": 1,
+      "chapter": 7,
+      "label": "SET UP THE REVERSE ROUTE",
+      "caption": "Approve the return direction separately: Branch A to Branch B.",
+      "frames": 175,
+      "output_start": 141.88,
+      "output_end": 148.88
+    },
+    {
+      "start": 254,
+      "end": 263.5,
+      "speed": 1,
+      "chapter": 8,
+      "label": "ENFORCE THE DISH TRAVEL POLICY",
+      "caption": "Transfer blocked: 10 minutes of travel exceeds the dish's 3-minute limit.",
+      "frames": 237,
+      "output_start": 148.88,
+      "output_end": 158.36
+    },
+    {
+      "start": 271,
+      "end": 279.5,
+      "speed": 1,
+      "chapter": 8,
+      "label": "A CHECKED PLAN, NOT A FALSE PROMISE",
+      "caption": "No eligible source means no transfer is created. Managers must review the constraints.",
+      "frames": 212,
+      "output_start": 158.36,
+      "output_end": 166.84
+    }
+  ]
+}

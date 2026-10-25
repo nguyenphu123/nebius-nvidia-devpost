@@ -1,0 +1,27 @@
+{
+  "name": "second-serving",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file=.env server.mjs",
+    "start": "node --env-file=.env server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:postgres": "node --test database/postgres.integration.mjs",
+    "db:migrate": "node --env-file=.env database/cli.mjs migrate",
+    "db:import": "node --env-file=.env database/cli.mjs import",
+    "db:check": "node --env-file=.env database/cli.mjs check",
+    "admin:setup": "node --env-file=.env setup-admin.mjs",
+    "dev:local-db": "node --env-file=.env database/local.mjs",
+    "admin:local": "node database/local.mjs setup"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "embedded-postgres": "^18.4.0-beta.17"
+  }
+}
