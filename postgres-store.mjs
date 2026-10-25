@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createAdminStore } from './admin-store.mjs';
 import { migrateOperations } from './operations.mjs';
+import { seedRecordingScenario, simulateRecordingRecovery } from './database/recording-scenario.mjs';
 
 // Fixed identifiers only; user values always use bound parameters.
 export const collections=['users','branches','dishes','ingredients','equipment','movements','incidents','routes','transfers','audit'];
@@ -66,6 +67,34 @@ export async function openPostgresStore({connectionString=process.env.DATABASE_U
     }catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
   };
   return store;
+}
+
+// CLI-only additive fixture setup. No HTTP operation exposes this capability.
+// Buffer domain writes in memory, validate a complete dry run, then persist once.
+export async function seedRecordingDemo(pool) {
+  const client=await pool.connect();
+  try {
+    await client.query('BEGIN');
+    await client.query('SELECT singleton FROM second_serving.store_meta WHERE singleton FOR UPDATE');
+    const before=await load(client);
+    const administrator=before.users.find(u=>u.role==='admin'&&u.active!==false);
+    if(!administrator)throw Error('Create an administrator before adding recording data.');
+    const actor=liveActor(before,administrator);
+    let next=before;
+    const core=createAdminStore(before,async candidate=>{next=candidate;});
+    const result=await seedRecordingScenario(core,actor);
+    for(const key of collections)for(const item of before[key]){
+      const after=next[key].find(value=>value.id===item.id);
+      if(!after||JSON.stringify(after)!==JSON.stringify(item))throw Error('Demo setup refused to change an existing record. No changes were committed.');
+    }
+    if(result.created){
+      result.inMemoryPreflight=simulateRecordingRecovery(await core.operations(actor),actor,result);
+      await persist(client,before,next);
+    }
+    await client.query('COMMIT');
+    return result;
+  }catch(error){await client.query('ROLLBACK');throw error;}
+  finally{client.release();}
 }
 export function validateImport(raw){
   if(raw?.version!==1||!['users','branches','dishes'].every(k=>Array.isArray(raw[k])))throw Error('Invalid legacy JSON document.');

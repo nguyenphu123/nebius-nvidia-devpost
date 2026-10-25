@@ -23,6 +23,8 @@ No default account is seeded on a fresh install. Existing workspace credentials 
 
 See [DATABASE.md](DATABASE.md) for an external PostgreSQL server, migrations and legacy data import. User accounts and business data persist between restarts; web sessions are stored in process memory and require sign-in again after restarting the app.
 
+For optional, clearly labelled fictional recording data, see [DEMO-DATA.md](DEMO-DATA.md). The additive seed prepares three branches and a feasible recovery scenario in the normal signed-in workspace; it does not reset existing data or create an interactive sandbox.
+
 ## Main workflows
 
 - **Branches:** assign menu items, opening status, queue delay and batch capacity.

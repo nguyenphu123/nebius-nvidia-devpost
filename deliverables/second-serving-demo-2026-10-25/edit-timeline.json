@@ -1,0 +1,243 @@
+{
+  "source_name": "25.10.2026_21.49.41_REC.mp4",
+  "source_sha256": "5ce3f10889645ee55d8c5952e8e9bf5af042334727948afbf26519174f7123b9",
+  "crop": {
+    "width": 1880,
+    "height": 928,
+    "x": 0,
+    "y": 4
+  },
+  "fps": 25,
+  "duration": 139.6,
+  "notes": [
+    "Actual moving user footage, edited chronologically. No fabricated application screens or outcomes.",
+    "This is a fictional operational scenario: a rice-cooker failure at DEMO Akasaka Pickup, with nine veggie bowls supplied by DEMO Shinjuku East.",
+    "The source shows an 18-minute estimate, zero transfer cost, a 10-minute approved route and a fresh 60-minute customer deadline.",
+    "Original audio is removed. Chrome password popups/account metadata and the right-hand recorder toolbar are excluded.",
+    "Waiting, repeated receipts, a validation stumble and unrelated branch browsing are shortened or omitted. Every accelerated segment is labelled.",
+    "The AI call/loading/response and the request-through-receipt confirmations remain at original playback speed.",
+    "Stock values are illustrative demo inputs, not measured business impact or safety validation."
+  ],
+  "clips": [
+    {
+      "start": 0,
+      "end": 7.7,
+      "speed": 1,
+      "chapter": 1,
+      "label": "ONE WORKSPACE FOR THE CHAIN",
+      "caption": "Branch operations and incident recovery for fast-food and takeaway chains.",
+      "frames": 192,
+      "output_start": 0.0,
+      "output_end": 7.68
+    },
+    {
+      "start": 28.8,
+      "end": 40.8,
+      "speed": 1,
+      "chapter": 1,
+      "label": "LOCAL MENUS, LOCAL READINESS",
+      "caption": "Switch branches to see what each store can sell with its own stock and equipment.",
+      "frames": 300,
+      "output_start": 7.68,
+      "output_end": 19.68
+    },
+    {
+      "start": 43,
+      "end": 47.8,
+      "speed": 1,
+      "chapter": 2,
+      "label": "BRANCH-OWNED INVENTORY",
+      "caption": "Akasaka tracks its own ingredients and stock balances.",
+      "frames": 120,
+      "output_start": 19.68,
+      "output_end": 24.48
+    },
+    {
+      "start": 54,
+      "end": 59.5,
+      "speed": 1,
+      "chapter": 2,
+      "label": "RECEIVE STOCK IN THE RIGHT UNIT",
+      "caption": "Record a stock receipt in the ingredient's measurement unit.",
+      "frames": 137,
+      "output_start": 24.48,
+      "output_end": 29.96
+    },
+    {
+      "start": 67,
+      "end": 75,
+      "speed": 1,
+      "chapter": 2,
+      "label": "A REASON AND AN AUDIT TRAIL",
+      "caption": "Save the receipt with a reason. The balance and movement history update.",
+      "frames": 200,
+      "output_start": 29.96,
+      "output_end": 37.96
+    },
+    {
+      "start": 78,
+      "end": 88,
+      "speed": 1,
+      "chapter": 2,
+      "label": "LINK SHARED INGREDIENTS",
+      "caption": "Choose which shared ingredients this branch tracks. Linking alone does not add stock.",
+      "frames": 250,
+      "output_start": 37.96,
+      "output_end": 47.96
+    },
+    {
+      "start": 103.8,
+      "end": 115,
+      "speed": 1.4,
+      "chapter": 2,
+      "label": "QUANTITIES, RESERVATIONS AND HISTORY",
+      "caption": "Branch inventory keeps quantities, reservations and recorded movements together.",
+      "frames": 200,
+      "output_start": 47.96,
+      "output_end": 55.96
+    },
+    {
+      "start": 119,
+      "end": 125,
+      "speed": 1,
+      "chapter": 3,
+      "label": "ONE SHARED INGREDIENT CATALOG",
+      "caption": "Ingredient definitions are shared across the chain. Stock quantities stay local.",
+      "frames": 150,
+      "output_start": 55.96,
+      "output_end": 61.96
+    },
+    {
+      "start": 126.3,
+      "end": 136.5,
+      "speed": 1,
+      "chapter": 4,
+      "label": "BRANCH EQUIPMENT OWNERSHIP",
+      "caption": "Akasaka's rice cooker is a branch-owned asset. Report a problem directly from its card.",
+      "frames": 255,
+      "output_start": 61.96,
+      "output_end": 72.16
+    },
+    {
+      "start": 137.8,
+      "end": 157.8,
+      "speed": 1.4,
+      "chapter": 4,
+      "label": "RECORD THE FAULT AND THE NEED",
+      "caption": "Confirm the cooker fault: nine veggie bowls need support within 60 minutes.",
+      "frames": 357,
+      "output_start": 72.16,
+      "output_end": 86.44
+    },
+    {
+      "start": 158,
+      "end": 167,
+      "speed": 1,
+      "chapter": 5,
+      "label": "CHECK RECOVERY CONSTRAINTS",
+      "caption": "No source is eligible yet. Support needs an approved route to the receiving branch.",
+      "frames": 225,
+      "output_start": 86.44,
+      "output_end": 95.44
+    },
+    {
+      "start": 178.2,
+      "end": 189.5,
+      "speed": 1,
+      "chapter": 6,
+      "label": "NVIDIA NEMOTRON ON NEBIUS",
+      "caption": "Request AI advice for manager review. No operational changes happen automatically.",
+      "frames": 282,
+      "output_start": 95.44,
+      "output_end": 106.72
+    },
+    {
+      "start": 198,
+      "end": 204.3,
+      "speed": 1,
+      "chapter": 7,
+      "label": "APPROVE THE DIRECTED ROUTE",
+      "caption": "Approve the demo route from Shinjuku East to Akasaka: 10 minutes of travel.",
+      "frames": 157,
+      "output_start": 106.72,
+      "output_end": 113.0
+    },
+    {
+      "start": 204.3,
+      "end": 207,
+      "speed": 1,
+      "chapter": 7,
+      "label": "A CHECKED SUPPORT OPTION",
+      "caption": "Eligible: 9 bowls · 18 minutes · ¥0",
+      "frames": 67,
+      "output_start": 113.0,
+      "output_end": 115.68
+    },
+    {
+      "start": 207,
+      "end": 211,
+      "speed": 1,
+      "chapter": 7,
+      "label": "REVIEW AND SEND THE REQUEST",
+      "caption": "Review source, destination and quantity. Sending does not reserve stock.",
+      "frames": 100,
+      "output_start": 115.68,
+      "output_end": 119.68
+    },
+    {
+      "start": 214.8,
+      "end": 219.5,
+      "speed": 1,
+      "chapter": 8,
+      "label": "APPROVE AND RESERVE",
+      "caption": "The source approves the request and reserves ingredients.",
+      "frames": 117,
+      "output_start": 119.68,
+      "output_end": 124.36
+    },
+    {
+      "start": 219.5,
+      "end": 222.8,
+      "speed": 1,
+      "chapter": 8,
+      "label": "PREPARE AND CONSUME STOCK",
+      "caption": "Starting preparation consumes ingredients at the source branch.",
+      "frames": 82,
+      "output_start": 124.36,
+      "output_end": 127.64
+    },
+    {
+      "start": 222.8,
+      "end": 226.2,
+      "speed": 1,
+      "chapter": 8,
+      "label": "RECORD DISPATCH",
+      "caption": "Confirm dispatch of the prepared dishes in this demo.",
+      "frames": 85,
+      "output_start": 127.64,
+      "output_end": 131.04
+    },
+    {
+      "start": 226.2,
+      "end": 230.5,
+      "speed": 1,
+      "chapter": 8,
+      "label": "CONFIRM DESTINATION RECEIPT",
+      "caption": "The receiving branch confirms the prepared meals have arrived in this demo.",
+      "frames": 107,
+      "output_start": 131.04,
+      "output_end": 135.32
+    },
+    {
+      "start": 230.5,
+      "end": 234.8,
+      "speed": 1,
+      "chapter": 8,
+      "label": "RECOVERY RECORDED, RESPONSIBILITY CLEAR",
+      "caption": "Nine bowls marked Received. Equipment repair and incident resolution remain separate.",
+      "frames": 107,
+      "output_start": 135.32,
+      "output_end": 139.6
+    }
+  ]
+}

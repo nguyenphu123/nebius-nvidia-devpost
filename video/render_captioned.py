@@ -56,19 +56,19 @@ def clock_label(seconds: float) -> str:
     return f"{int(seconds) // 60:02}:{seconds % 60:05.2f}"
 
 
-def make_overlay(clip: dict, index: int, total: int, target: Path) -> None:
+def make_overlay(clip: dict, index: int, total: int, target: Path, chapters: int = 8, eyebrow: str = "REAL USER WALKTHROUGH") -> None:
     overlay = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
     draw = ImageDraw.Draw(overlay)
     # Deliberately leave the app viewport untouched, including buttons and forms.
     draw.rectangle((0, 0, WIDTH, 51), fill=COLORS["bg"])
     draw.rectangle((0, 920, WIDTH, HEIGHT), fill=COLORS["bg"])
     draw.text((80, 10), "SECOND SERVING", font=font(22, True), fill=COLORS["accent"])
-    draw.text((340, 15), "REAL USER WALKTHROUGH", font=font(16), fill=COLORS["muted"])
+    draw.text((340, 15), eyebrow, font=font(16), fill=COLORS["muted"])
     speed = clip["speed"]
-    right = f"{speed:g}× SPEED · TYPING COMPRESSED" if speed != 1 else "ORIGINAL SPEED · EDITED CUTS"
+    right = f"{speed:g}× PLAYBACK · EDITED CUTS" if speed != 1 else "ORIGINAL SPEED · EDITED CUTS"
     draw.text((1840, 15), right, anchor="ra", font=font(16), fill=COLORS["muted"])
     draw.line((80, 935, 1840, 935), fill="#436257", width=1)
-    draw.text((80, 947), f"0{clip['chapter']} / 08   {clip['label']}", font=font(18, True), fill=COLORS["accent"])
+    draw.text((80, 947), f"{clip['chapter']:02} / {chapters:02}   {clip['label']}", font=font(18, True), fill=COLORS["accent"])
     lines = wrap_text(draw, clip["caption"], font(30), 1760)
     if len(lines) > 2:
         raise ValueError(f"Caption needs more than two lines: {clip['caption']}")
@@ -97,12 +97,20 @@ def main() -> None:
     if not out.is_relative_to(ROOT) or out == ROOT:
         raise ValueError("Output must be a dedicated directory inside this workspace.")
     out.mkdir(parents=True, exist_ok=True)
-    cache = ROOT / ".demo-tools" / "captioned-video-2026-10-24"
-    cache.mkdir(parents=True, exist_ok=True)
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     clips = plan["clips"]
+    if not clips:
+        raise ValueError("The reviewed edit plan must contain at least one clip.")
     if source.name != plan["source_name"]:
         raise ValueError("This edit plan is tied to the reviewed source recording.")
+    source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+    cache_key = hashlib.sha256((str(source) + source_hash).encode()).hexdigest()[:12]
+    cache = ROOT / ".demo-tools" / f"captioned-video-{cache_key}"
+    cache.mkdir(parents=True, exist_ok=True)
+    crop = plan.get("crop", {"width": 1880, "height": 928, "x": 0, "y": 6})
+    if any(not isinstance(crop.get(key), int) or crop[key] < minimum for key, minimum in [("width",2),("height",2),("x",0),("y",0)]):
+        raise ValueError("Crop must use integer dimensions and non-negative offsets.")
+    total_chapters = max(clip["chapter"] for clip in clips)
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
     final = out / "second-serving-captioned-en.mp4"
     if final.resolve() == source:
@@ -126,7 +134,7 @@ def main() -> None:
                 chapters[-1]["end"] = round(cursor / FPS * 1000)
             chapters.append({"start": round(cursor / FPS * 1000), "title": clip["label"]})
             last_chapter = clip["chapter"]
-        make_overlay(clip, index, len(clips), cache / f"overlay-{index:02}.png")
+        make_overlay(clip, index, len(clips), cache / f"overlay-{index:02}.png", total_chapters, plan.get("eyebrow", "REAL USER WALKTHROUGH"))
         cursor += frames
     chapters[-1]["end"] = round(cursor / FPS * 1000)
     metadata = [";FFMETADATA1", f"title={plan['title']}", "comment=Actual user footage; edited cuts; speedups labelled; no audio."]
@@ -136,21 +144,21 @@ def main() -> None:
     if duration >= 180:
         raise ValueError(f"Submission cut must be under three minutes, got {duration:.2f}s")
     (out / "second-serving-captioned-en.srt").write_text("\n".join(srt), encoding="utf-8")
-    (out / "edit-timeline.json").write_text(json.dumps({"source_name": source.name, "fps": FPS, "duration": duration, "notes": plan["notes"], "clips": timeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "edit-timeline.json").write_text(json.dumps({"source_name": source.name, "source_sha256": source_hash, "crop": crop, "fps": FPS, "duration": duration, "notes": plan["notes"], "clips": timeline}, indent=2, ensure_ascii=False), encoding="utf-8")
     chapter_path = cache / "chapters.ffmetadata"
     chapter_path.write_text("\n".join(metadata) + "\n", encoding="utf-8")
 
     def render(index: int, clip: dict) -> Path:
         segment = cache / f"segment-{index:02}.mp4"
         overlay = cache / f"overlay-{index:02}.png"
-        signature = hashlib.sha256(b"render-v2-frame-exact" + json.dumps(clip, sort_keys=True).encode() + overlay.read_bytes() + str(source.stat().st_mtime_ns).encode()).hexdigest()
+        signature = hashlib.sha256(b"render-v3-source-specific" + json.dumps(clip, sort_keys=True).encode() + json.dumps(crop, sort_keys=True).encode() + overlay.read_bytes() + source_hash.encode()).hexdigest()
         signature_file = cache / f"segment-{index:02}.sha256"
         if segment.exists() and signature_file.exists() and signature_file.read_text().strip() == signature:
             print(f"Cached {index + 1:02}/{len(clips)}: {clip['label']}", flush=True)
             return segment
         x, y, width, height = FRAME
         filters = (
-            "[0:v]crop=1880:928:0:6,tpad=stop_mode=clone:stop_duration=0.2,"
+            f"[0:v]crop={crop['width']}:{crop['height']}:{crop['x']}:{crop['y']},tpad=stop_mode=clone:stop_duration=0.2,"
             f"setpts=(PTS-STARTPTS)/{clip['speed']},"
             f"scale={width}:{height}:flags=lanczos,setsar=1,fps={FPS},"
             f"pad={WIDTH}:{HEIGHT}:{x}:{y}:color={COLORS['bg']}[app];"
@@ -190,16 +198,19 @@ def main() -> None:
         "English captions are burned into the MP4. The SRT is an editable sidecar; do not enable it over the burned-in captions.", "",
         "## Editorial notes", "",
         *[f"- {note}" for note in plan["notes"]], "",
-        "## Still needed for a stronger submission", "",
-        "The source ends with a policy-blocked recovery request. It does not show a successful request, approval, preparation, dispatch or receipt. Record that complete flow with a feasible, intentionally approved demo scenario, then append it or replace repetitive setup footage. Do not loosen real food-handling policies merely to obtain a successful demo.", "",
-        "No claim of measured waste reduction, real customer adoption, completed delivery, incident resolution or verified physical repair is added.", "",
+        "## Observed outcome", "",
+        plan.get("outcome_note", "The source ends with a policy-blocked recovery request. It does not show a successful request, approval, preparation, dispatch or receipt. Record that complete flow with a feasible, intentionally approved demo scenario, then append it or replace repetitive setup footage. Do not loosen real food-handling policies merely to obtain a successful demo."), "",
+        plan.get("claims_note", "No claim of measured waste reduction, real customer adoption, completed delivery, incident resolution or verified physical repair is added."), "",
         "## Edit decision list", "",
         "| Output | Source | Speed | Section |", "|---|---|---|---|"
     ]
     for clip in timeline:
         notes.append(f"| {clock_label(clip['output_start'])}–{clock_label(clip['output_end'])} | {clock_label(clip['start'])}–{clock_label(clip['end'])} | {clip['speed']:g}× | {clip['label']} |")
     (out / "EDIT-NOTES.md").write_text("\n".join(notes) + "\n", encoding="utf-8")
-    print(json.dumps({"video": str(final), "duration_seconds": duration, "bytes": final.stat().st_size, "source_unchanged": True}, indent=2), flush=True)
+    source_unchanged = hashlib.sha256(source.read_bytes()).hexdigest() == source_hash
+    if not source_unchanged:
+        raise RuntimeError("The input recording changed while rendering. Review it again before using this edit.")
+    print(json.dumps({"video": str(final), "duration_seconds": duration, "bytes": final.stat().st_size, "cache": str(cache), "source_unchanged": source_unchanged}, indent=2), flush=True)
 
 
 if __name__ == "__main__":
