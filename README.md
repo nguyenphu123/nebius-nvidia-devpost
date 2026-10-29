@@ -4,6 +4,8 @@ Second Serving helps fast-food and takeaway chains see what each branch can sell
 
 NVIDIA Nemotron supplies incident advice through Nebius Token Factory. Deterministic rules check feasibility and managers confirm changes.
 
+**Hosted judge build:** [Second Serving sign-in](https://second-serving-judges.onrender.com/login). Use username `judge` and the password supplied in the Devpost testing instructions. See [JUDGE-GUIDE.md](JUDGE-GUIDE.md) for the fictional recovery scenario. Render Free may take about a minute to start after inactivity.
+
 For a Vietnamese walkthrough with the exact English UI labels, see [USER-GUIDE.md](USER-GUIDE.md). It covers branch setup, daily operations, incident advice and the complete prepared-food transfer workflow.
 
 For step-by-step app and PostgreSQL installation, see [SETUP.md](SETUP.md) (Vietnamese). It separates the bundled local database workflow from an external PostgreSQL setup and includes administrator creation, checks, troubleshooting and backup guidance.
@@ -59,12 +61,12 @@ The automated PostgreSQL suite uses a disposable test cluster. Product UI checks
 
 [scope.md](scope.md), [prd.md](prd.md), [spec.md](spec.md), [SUBMISSION-CHECKLIST.md](SUBMISSION-CHECKLIST.md) and [SUBMISSION-VIDEO-EN.md](SUBMISSION-VIDEO-EN.md) describe the current app.
 
-Source is published at [nguyenphu123/nebius-nvidia-devpost](https://github.com/nguyenphu123/nebius-nvidia-devpost) under the [MIT license](LICENSE). The [captioned product video](https://youtu.be/Gy6WMRaRm2E) shows the recorded application workflow. A verified hosted build/test-build URL must also be supplied for submission; a localhost URL is not judge-accessible from another device.
+Source is published at [nguyenphu123/nebius-nvidia-devpost](https://github.com/nguyenphu123/nebius-nvidia-devpost) under the [MIT license](LICENSE). The [captioned product video](https://youtu.be/Gy6WMRaRm2E) shows the recorded application workflow. Add the [hosted judge build](https://second-serving-judges.onrender.com/login) and account testing instructions to the actual Devpost submission form.
 
 ## Pilot limits
 
-This is a local pilot with one chain per database. There is no POS/supplier integration, raw-ingredient transfer workflow, live courier tracking, lot/expiry tracking, automatic unit conversion or autonomous AI execution. Transport and timing policies are manually supplied planning assumptions. Staff remain responsible for food handling, allergens and actual receipt/dispatch confirmation.
+This is a pilot with one chain per database. The hosted judge build uses Render Free and a separate Neon PostgreSQL database containing fictional records. Sessions and usage limits are held in one web process, so restarting requires sign-in again. There is no POS/supplier integration, raw-ingredient transfer workflow, live courier tracking, lot/expiry tracking, automatic unit conversion or autonomous AI execution. Transport and timing policies are manually supplied planning assumptions. Staff remain responsible for food handling, allergens and actual receipt/dispatch confirmation.
 
-Legacy prototypes remain archived at `/legacy` and `/rescue`; they use separate sample logic and are not the current chain workflow. Their historical notes are in [LEGACY-PLANNER.md](LEGACY-PLANNER.md). Historical MP4s do not demonstrate the current product.
+Legacy prototypes remain archived locally at `/legacy` and `/rescue`; they are disabled on the hosted build. They use separate sample logic and are not the current chain workflow. Their historical notes are in [LEGACY-PLANNER.md](LEGACY-PLANNER.md). Historical MP4s do not demonstrate the current product.
 
 Never publish `.env`, `data/`, local PostgreSQL credentials, or a recording that exposes provider keys. The local trial account must be reviewed before choosing credentials for a public build.

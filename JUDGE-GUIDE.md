@@ -4,17 +4,17 @@ Second Serving helps fast-food and takeaway chains manage branch menus, ingredie
 
 ## Access
 
-The submitter must fill in the following details in the Devpost testing instructions after verifying the hosted build:
+Open the hosted application below. The submitter must supply the judge account's password in the Devpost testing instructions; it is intentionally absent from the public repository.
 
 ```text
-Application: <verified HTTPS app URL>/login
-Username: <dedicated judge-build username>
-Password: <dedicated judge-build password>
+Application: https://second-serving-judges.onrender.com/login
+Username: judge
+Password: <provided in the Devpost testing instructions>
 ```
 
-Judges do not need to install software or supply an API key. These placeholders are not working credentials. The hosted build must be running and the actual credentials must be provided in the submission.
+Judges do not need to install software or supply an API key. The password placeholder above is not a usable password. Include the real password in the submission's testing instructions.
 
-If the submitter deploys on Render Free, the first visit after inactivity may show a startup screen for about a minute. Wait for the sign-in page. The database persists independently; a web-service restart requires signing in again.
+The judge build uses Render Free and Neon PostgreSQL. The first visit after inactivity may show a startup screen for about a minute. Wait for the sign-in page. The database persists independently; a web-service restart requires signing in again.
 
 Source: [GitHub repository](https://github.com/nguyenphu123/nebius-nvidia-devpost)
 
