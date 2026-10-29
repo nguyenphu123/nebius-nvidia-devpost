@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node --env-file=.env server.mjs",
     "start": "node --env-file=.env server.mjs",
+    "start:hosted": "node database/deploy.mjs",
     "test": "node --test test/*.test.mjs",
     "test:postgres": "node --test database/*.integration.mjs",
     "db:migrate": "node --env-file=.env database/cli.mjs migrate",

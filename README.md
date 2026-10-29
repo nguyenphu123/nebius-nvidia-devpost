@@ -8,6 +8,8 @@ For a Vietnamese walkthrough with the exact English UI labels, see [USER-GUIDE.m
 
 For step-by-step app and PostgreSQL installation, see [SETUP.md](SETUP.md) (Vietnamese). It separates the bundled local database workflow from an external PostgreSQL setup and includes administrator creation, checks, troubleshooting and backup guidance.
 
+For a hosted judge build, see [DEPLOY-RENDER.md](DEPLOY-RENDER.md). It covers a separate managed PostgreSQL database, HTTPS configuration, one-time fixture setup and deployment verification. [JUDGE-GUIDE.md](JUDGE-GUIDE.md) provides English testing instructions; fill in the verified hosted URL and dedicated credentials in the submission.
+
 ## Run locally
 
 Requires Node.js 22+ and npm. PostgreSQL is the default store.
@@ -57,7 +59,7 @@ The automated PostgreSQL suite uses a disposable test cluster. Product UI checks
 
 [scope.md](scope.md), [prd.md](prd.md), [spec.md](spec.md), [SUBMISSION-CHECKLIST.md](SUBMISSION-CHECKLIST.md) and [SUBMISSION-VIDEO-EN.md](SUBMISSION-VIDEO-EN.md) describe the current app.
 
-Source is published at [nguyenphu123/nebius-nvidia-devpost](https://github.com/nguyenphu123/nebius-nvidia-devpost) under the [MIT license](LICENSE). A working build/test-build URL and the public YouTube video link still need to be supplied for submission. This checkout currently runs on loopback; a localhost URL is not judge-accessible from another device.
+Source is published at [nguyenphu123/nebius-nvidia-devpost](https://github.com/nguyenphu123/nebius-nvidia-devpost) under the [MIT license](LICENSE). The [captioned product video](https://youtu.be/Gy6WMRaRm2E) shows the recorded application workflow. A verified hosted build/test-build URL must also be supplied for submission; a localhost URL is not judge-accessible from another device.
 
 ## Pilot limits
 
