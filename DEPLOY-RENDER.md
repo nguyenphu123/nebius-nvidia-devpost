@@ -2,13 +2,21 @@
 
 This guide prepares a hosted judge build: one Node.js web service, one persistent PostgreSQL database, HTTPS, and an isolated fictional dataset. It does not publish a deployment or establish that a URL is working. Verify the final URL before adding it to Devpost.
 
+## No-paid-service option: Render Free + Neon Free
+
+For a demo within the providers' free quotas, use a **Render Free web service** and a **Neon Free PostgreSQL project**, instead of creating Render Postgres. No paid upgrade is needed for initial setup; Nebius inference still uses the configured account's credits. Check the current [Neon plan limits](https://neon.com/docs/introduction/plans) and [Render free-service limits](https://render.com/docs/free).
+
+Create a separate Neon project for the fictional judge build, preferably near the Render web service's region. In Neon's connection dialog, turn **Connection pooling off** and obtain the **direct** PostgreSQL URL with TLS enabled (`sslmode=require` or the provider's stronger recommended setting). Set that full URL privately as Render's `DATABASE_URL`. Do not paste credentials in the public repository or Devpost submission. Hosted bootstrap uses a session advisory lock, which requires a direct connection rather than transaction-mode pooling.
+
+Use the web-service settings and environment variables below, but select the **Free** web compute plan and skip the Render database creation step. Do not click a paid upgrade or attach a paid disk. Free services have usage limits and no availability guarantee: Render sleeps after 15 idle minutes and may take about a minute to wake. Neon also suspends idle compute and resumes on a database connection. Tell judges to wait for startup, and confirm that the services remain within quota throughout judging.
+
 The application uses Node.js native HTTP, vanilla JavaScript, HTML/CSS, PostgreSQL, and NVIDIA Nemotron through Nebius Token Factory. Create a **Web Service**, rather than a static site.
 
-## 1. Choose services that remain available through judging
+## 1. Optional paid alternative: Render web + Render Postgres
 
 Use the same Render region for the web service and PostgreSQL database. Choose service plans deliberately in your Render account; this repository does not authorize charges.
 
-The competition requires judge access until judging ends on **December 15, 2026, at 12:00 pm Pacific Time**. Render's free PostgreSQL database expires **30 days after creation**, so a free database created in October will expire before judging. Use a database plan that remains available throughout judging. Free web services also sleep after 15 minutes without traffic and can take about a minute to wake; an always-running service gives judges a smoother first visit. See [the competition rules](https://nebiusglobalaihackathon.devpost.com/rules) and [Render's free-service limitations](https://render.com/docs/free).
+The competition requires judge access until judging ends on **December 15, 2026, at 12:00 pm Pacific Time**. Render's free PostgreSQL database expires **30 days after creation**, so a free database created in October will expire before judging. If choosing Render Postgres, use a database plan that remains available throughout judging. The external Neon option above uses its separate Free plan rather than Render's expiring database. See [the competition rules](https://nebiusglobalaihackathon.devpost.com/rules) and [Render's free-service limitations](https://render.com/docs/free).
 
 ## 2. Create a separate PostgreSQL database
 

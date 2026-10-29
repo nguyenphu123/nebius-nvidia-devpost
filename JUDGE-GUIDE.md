@@ -14,6 +14,8 @@ Password: <dedicated judge-build password>
 
 Judges do not need to install software or supply an API key. These placeholders are not working credentials. The hosted build must be running and the actual credentials must be provided in the submission.
 
+If the submitter deploys on Render Free, the first visit after inactivity may show a startup screen for about a minute. Wait for the sign-in page. The database persists independently; a web-service restart requires signing in again.
+
 Source: [GitHub repository](https://github.com/nguyenphu123/nebius-nvidia-devpost)
 
 Recorded product walkthrough: [YouTube video](https://youtu.be/Gy6WMRaRm2E)
